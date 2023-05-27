@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Message</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      margin: 0 auto;
+      border-right: .15em white;
+      animation: typing 4s steps(80, end);
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    .centered {
+      position: fixed;
+      left: 50%;
+      bottom: 80px;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hi Alijah!</h1>
+  <p id="typewriter">Before everything else, I want to greet you a happy birthday!</p>
+  <button class="centered" onclick="redirectToMsg()">Tap Me!</button>
+
+  <script>
+    var text = "Before everything else, I want to greet you a happy birthday!";
+    var speed = 50; // Speed (in milliseconds) at which each letter is displayed
+
+    function typeWriter() {
+      var element = document.getElementById("typewriter");
+      var i = 0;
+      function typingLoop() {
+        if (i < text.length) {
+          element.innerHTML = text.slice(0, i + 1) + "<span id='cursor'></span>";
+          i++;
+          setTimeout(typingLoop, speed);
+        }
+      }
+      typingLoop();
+    }
+
+    function redirectToMsg() {
+      window.location.href = "msg.html";
+    }
+
+    typeWriter();
+  </script>
+</body>
+</html>
